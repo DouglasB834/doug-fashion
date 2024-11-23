@@ -10,3 +10,9 @@ export interface Product {
   name: string;
   imageUrl: string;
 }
+
+export interface User {
+  id?: string;
+  email: string;
+  password: string;
+}

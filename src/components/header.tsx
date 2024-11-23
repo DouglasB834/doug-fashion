@@ -1,12 +1,22 @@
 import { ShoppingCart } from "lucide-react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+import { RootState } from "@/redux/rootReducer";
+import { LogoutAction } from "@/redux/user/actions";
 
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 export const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const { currentUser } = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(LogoutAction());
+  };
 
   return (
     <header className="p- flex w-full justify-between bg-primary text-white">
@@ -18,9 +28,16 @@ export const Header = () => {
           <Link to="/" className="text-sm font-medium">
             Explorar
           </Link>
-          <Link to="/login" className="text-sm font-medium">
-            Login
-          </Link>
+
+          {currentUser ? (
+            <Button onClick={handleLogout} className="text-sm font-medium">
+              Sair
+            </Button>
+          ) : (
+            <Link to="/login" className="text-sm font-medium">
+              Login
+            </Link>
+          )}
 
           <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
             <SheetTrigger asChild>

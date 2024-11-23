@@ -1,13 +1,14 @@
-// import { GoalIcon } from "lucide-react";
 import { ArrowBigLeft, Circle, GoalIcon, LaughIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
+import { userLoginAction } from "@/redux/user/actions";
 
 import { loginSchema } from "./schema";
 
@@ -16,6 +17,7 @@ type loginForm = z.infer<typeof loginSchema>;
 export const LoginPage = () => {
   const [loadingLogin, setLoadingLogin] = useState<boolean>(false);
 
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -29,12 +31,11 @@ export const LoginPage = () => {
     setLoadingLogin((prev) => prev!);
     try {
       console.log("Login data:", data);
-
+      dispatch(userLoginAction(data.email, data.password));
       setTimeout(() => {
         navigate("/");
       }, 2000);
 
-      // Simular um erro de login para demonstração
       throw new Error("Credenciais inválidas");
     } catch (error) {
       console.log(
