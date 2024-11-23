@@ -15,7 +15,7 @@ export const Header = () => {
           doug - fashion
         </Link>
         <nav className="flex items-center space-x-4">
-          <Link to="/explorar" className="text-sm font-medium">
+          <Link to="/" className="text-sm font-medium">
             Explorar
           </Link>
           <Link to="/login" className="text-sm font-medium">
