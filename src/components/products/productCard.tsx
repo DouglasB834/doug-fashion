@@ -1,6 +1,8 @@
+import { useDispatch } from "react-redux";
 // import { Link } from "react-router-dom";
 
 import { Product } from "@/types";
+import { addProductCart } from "@/redux/cart/actions";
 
 import { Button } from "../ui/button";
 
@@ -9,6 +11,13 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const dispatch = useDispatch();
+
+  const handleAddProduct = () => {
+    // console.log(product);
+    dispatch(addProductCart(product));
+  };
+
   return (
     <div>
       {/* <Link to={`/product/${product.id}`} className="group"> */}
@@ -20,8 +29,9 @@ export function ProductCard({ product }: ProductCardProps) {
           className="max-w-300 h-full w-full object-cover object-center group-hover:opacity-75"
         />
         <Button
+          onClick={handleAddProduct}
           variant={"default"}
-          className="hover: absolute bottom-1 left-1/2 -translate-x-1/2 transform opacity-70 hover:opacity-100"
+          className="hover: absolute bottom-1 left-1/2 z-50 -translate-x-1/2 transform opacity-70 hover:opacity-100"
         >
           Adicioanr ao carrinho
         </Button>
