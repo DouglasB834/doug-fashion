@@ -43,7 +43,7 @@ export const Cart = () => {
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" className="px-6">
           <ShoppingCart className="h-5 w-5" />
           {products.length > 0 && (
             <span className="bg- w rounded-full text-sm font-medium">
@@ -94,7 +94,7 @@ export const Cart = () => {
                   <p>{formattedPrice(TotalPriceProducts)}</p>
                 </div>
               </div>
-              {currentUser ? (
+              {currentUser?.email ? (
                 <Button
                   className="border- text-sm font-semibold uppercase"
                   onClick={handleCheckout}
@@ -103,7 +103,8 @@ export const Cart = () => {
                 </Button>
               ) : (
                 <Link
-                  to={"/"}
+                  to={"/login"}
+                  onClick={() => setIsCartOpen(false)}
                   className="border-b-2 text-sm hover:text-blue-900"
                 >
                   Faça Login para finalizar a compra

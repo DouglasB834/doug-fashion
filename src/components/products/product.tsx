@@ -29,7 +29,7 @@ export function ProductList() {
         <h2 className="mb-8 text-2xl font-semibold underline decoration-primary">
           Fashion Galeria
         </h2>
-        <div>
+        <div className="flex justify-end">
           <select
             id="sort"
             className="mb-1 rounded-lg border p-1"
