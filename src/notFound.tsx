@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
-// import imgNotFound from "@/assets/notFound.jpg";
+
+import imgNotFound from "../public/notFound.jpg";
 
 import "@/global.css";
 
@@ -13,13 +14,13 @@ export default function NotFound() {
           404 - Página não encontrada
         </h1>
         <p className="mb-8 text-xl text-gray-600">Você deve estar perdido!</p>
-        {/* <img
+        <img
           src={imgNotFound || ""}
           alt="Pessoa perdida, page not Found"
           width={300}
           height={300}
           className="mx-auto mb-8"
-        /> */}
+        />
         <Link to="/">
           <Button
             aria-label="back home page"

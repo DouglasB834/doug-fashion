@@ -9,6 +9,8 @@ export interface Product {
   price: number;
   name: string;
   imageUrl: string;
+  quantity?: number;
+  description: string;
 }
 
 export interface User {

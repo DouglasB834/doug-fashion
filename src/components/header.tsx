@@ -26,7 +26,7 @@ export const Header = () => {
             Explorar
           </Link>
 
-          {currentUser ? (
+          {currentUser?.email ? (
             <Button onClick={handleLogout} className="text-sm font-medium">
               Sair
             </Button>

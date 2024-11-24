@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { Category } from "@/types";
-import categories from "@/data/categories";
+import categories from "@/services/categories";
 
 import { CategoryItem } from "./categoryItem";
 

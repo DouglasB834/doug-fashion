@@ -6,17 +6,17 @@ import { ActionTypes } from "./actions";
 
 export interface UserLoginAction {
   type: ActionTypes.USER_LOGIN | ActionTypes.USER_LOGOUT;
-  payload: { name: string; password: string };
+  payload: { email: string; password: string };
 }
 
 export interface UserState {
-  currentUser: { name: string; password: string } | null;
+  currentUser: { email: string; password: string } | null;
 }
 
 type Action = UserLoginAction;
 
 const initialState = {
-  currentUser: { name: "", password: "" },
+  currentUser: { email: "", password: "" },
 };
 
 const userReducer = (

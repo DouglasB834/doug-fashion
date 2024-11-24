@@ -13,9 +13,6 @@ import { Button } from "../ui/button";
 import { SheetClose } from "../ui/sheet";
 
 export const CartItem = ({ product }: { product: Product }) => {
-  // const { decreseProductCart, increseProductCart, removeProductCart } =
-  //   useContext(CartContext);
-
   const dispatch = useDispatch();
 
   const handleDescreseProductCart = () => {
@@ -52,17 +49,6 @@ export const CartItem = ({ product }: { product: Product }) => {
               <figcaption className="text-xs">{product.name}</figcaption>
             </Link>
           </SheetClose>
-          {/* <div className="flex flex-wrap items-center gap-2">
-            <p className="text-sm font-bold">
-              R${Number(product.totalPrice).toFixed(2)}
-            </p>
-            {product.discountPercentage > 0 && (
-              <span className="text-xs line-through opacity-75">
-                R$ {Number(product.basePrice).toFixed(2)}
-              </span>
-            )}
-          </div> */}
-
           <div className="flex items-center gap-1">
             <Button
               size={"icon"}
