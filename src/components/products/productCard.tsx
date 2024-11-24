@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { Link } from "react-router-dom";
 
 import { Product } from "@/types";
-import { addProductCart } from "@/redux/cart/actions";
+import { addProduct } from "@/redux/cart/slice";
+import { formattedPrice } from "@/helps/formatPrice";
 
 import { Button } from "../ui/button";
 
@@ -20,8 +20,8 @@ export function ProductCard({ product }: ProductCardProps) {
     setTimeout(() => {
       setisDisabled(false);
     }, 1500);
-
-    dispatch(addProductCart(product));
+    console.log(product, "fora actions");
+    dispatch(addProduct(product));
   };
 
   return (
@@ -45,12 +45,12 @@ export function ProductCard({ product }: ProductCardProps) {
           disabled={isDisabled}
           onClick={handleAddProduct}
           variant={"default"}
-          className="hover: absolute bottom-0 left-1/2 z-50 -translate-x-1/2 transform opacity-70 hover:opacity-100"
+          className={`absolute bottom-1 left-1/2 z-50 -translate-x-1/2 transform border-secondary ${!isDisabled ? "opacity-70" : "border opacity-100"} hover:border hover:opacity-100`}
         >
           {isDisabled ? (
-            <p className="animate-bounce text-green-300">Adicionando...</p>
+            <p className="animate-bounce text-green-500">Adicionando...</p>
           ) : (
-            " Adicioanr ao carrinho"
+            " Adicionar ao carrinho"
           )}
         </Button>
       </div>
@@ -58,7 +58,7 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="flex items-center justify-between px-2">
         <h3 className="mt-4 text-sm text-gray-700">{product?.name}</h3>
         <p className="mt-1 text-lg font-medium text-gray-900">
-          ${product?.price.toFixed(2)}
+          {formattedPrice(product?.price)}
         </p>
       </div>
     </div>

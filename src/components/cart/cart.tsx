@@ -11,7 +11,8 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { RootState } from "@/redux/rootReducer";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { resetCart } from "@/redux/cart/actions";
+import { resetCart } from "@/redux/cart/slice";
+import { formattedPrice } from "@/helps/formatPrice";
 
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
@@ -28,13 +29,6 @@ export const Cart = () => {
   const productsCount = useSelector(SelectProductCount);
   const TotalPriceProducts = useSelector(SelectTotalPriceProduct);
   const dispatch = useDispatch();
-  const formattedPrice = (price: number) => {
-    return price.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-      minimumFractionDigits: 2,
-    });
-  };
 
   const handleCheckout = async () => {
     if (!currentUser) {

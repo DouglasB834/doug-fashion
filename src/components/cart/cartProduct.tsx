@@ -1,13 +1,14 @@
 import {
   decreaseProductCard,
-  increseProductCart,
+  incrementProductCart,
   removeProductCart,
-} from "@/redux/cart/actions";
+} from "@/redux/cart/slice";
 import { ArrowLeftIcon, ArrowRightIcon, Trash2Icon } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { Product } from "@/types";
+import { formattedPrice } from "@/helps/formatPrice";
 
 import { Button } from "../ui/button";
 import { SheetClose } from "../ui/sheet";
@@ -15,11 +16,11 @@ import { SheetClose } from "../ui/sheet";
 export const CartItem = ({ product }: { product: Product }) => {
   const dispatch = useDispatch();
 
+  const handleIncreseProductCart = () => {
+    dispatch(incrementProductCart(product));
+  };
   const handleDescreseProductCart = () => {
     dispatch(decreaseProductCard(product));
-  };
-  const handleIncreseProductCart = () => {
-    dispatch(increseProductCart(product));
   };
   const handleRemoveProductCart = () => {
     dispatch(removeProductCart(product));
@@ -37,7 +38,7 @@ export const CartItem = ({ product }: { product: Product }) => {
                 width={0}
                 height={0}
                 sizes="100vw"
-                className="h-auto max-h-[70%] w-full max-w-[80%] object-contain"
+                className="h-auto max-h-[70%] w-full max-w-[80%] object-cover"
               />
             </figure>
           </Link>
@@ -45,16 +46,19 @@ export const CartItem = ({ product }: { product: Product }) => {
 
         <div className="flex flex-col gap-2">
           <SheetClose asChild>
-            <Link to={`/product/${product.id}`}>
+            {/* <Link to={`/product/${product.id}`}> */}
+            <>
               <figcaption className="text-xs">{product.name}</figcaption>
-            </Link>
+              <p className="text-sm">{formattedPrice(product.price)}</p>
+            </>
+            {/* </Link> */}
           </SheetClose>
           <div className="flex items-center gap-1">
             <Button
               size={"icon"}
               variant={"outline"}
               className="h-7"
-              onClick={handleIncreseProductCart}
+              onClick={handleDescreseProductCart}
             >
               <ArrowLeftIcon size={14} />
             </Button>
@@ -65,7 +69,7 @@ export const CartItem = ({ product }: { product: Product }) => {
               className="h-7"
               size={"icon"}
               variant={"outline"}
-              onClick={handleDescreseProductCart}
+              onClick={handleIncreseProductCart}
             >
               <ArrowRightIcon size={14} />
             </Button>
