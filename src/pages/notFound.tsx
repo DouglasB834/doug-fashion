@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
-
-import imgNotFound from "../public/notFound.jpg";
+import imgNotFound from "@/assets/notFound.jpg";
 
 import "@/global.css";
 

@@ -1,61 +1,57 @@
-# React + TypeScript + Vite
+# Ecoomerce Fashion Close
 
-pagina de detalhes
+## Descrição
 
-Currently, two official plugins are available:
+Este projeto é uma aplicação web desenvolvida em React com TypeScript. O objetivo é simular um fluxo de compra, utilizando Redux para gerenciar o estado da aplicação, sem a necessidade de um backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Acesse o Projeto
 
-## Expanding the ESLint configuration
+Você pode acessar a aplicação hospedada no Vercel através do seguinte link:
+[Fashion Close -> ](https://doug-fashion.vercel.app/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<img src="././public/Fashionpage.png" alt="Prévia Ecommerce" style="width: 500px; height: auto;" />
 
-- Configure the top-level `parserOptions` property like this:
+## Tecnologias Utilizadas
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+- **Frontend**: React, TypeScript, Redux, Redux Toolkit, React Router, React hook form, Zod
+- **Estilização**: Tailwind CSS, ui Shadacn, Lucide React
+- **Persistência de Dados**: Redux para armazenar e repassar dados entre as páginas
+
+## Como Executar o Projeto
+
+1. Clone o repositório, usar o seguinte comando no seu terminal:
+
+```bash
+git clone https://github.com/DouglasB834/doug-fashion.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Navegue até o diretório do projeto.
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
+```bash
+ cd doug-fashion
 ```
 
-Descrição do Teste
+3. Execute comando para instalar as dependências.
 
-Este teste técnico tem como objetivo avaliar suas habilidades em desenvolvimento front-end utilizando React e TypeScript. Você será responsável por criar uma aplicação simples que simula um fluxo de compra, sem a necessidade de backend, utilizando Redux para gerenciar o estado da aplicação.
+```bash
+ yarn install
+```
+
+4. Inicie o servidor de desenvolvimento:
+
+```bash
+   yarn dev
+```
+
+### 5. Acesse a aplicação em `http://localhost:5173`.
+
+## Requisitos do Projeto
+
+Desenvolvimento front-end utilizando React e TypeScript. Criar uma aplicação simples que simula um fluxo de compra, sem a necessidade de backend, utilizando Redux para gerenciar o estado da aplicação.
 
 Requisitos do Projeto
 
-1. Login:
+## 1. Login:
 
 ○ Crie uma página de login onde o usuário deverá inserir um nome e um email para prosseguir.
 
@@ -63,35 +59,35 @@ Requisitos do Projeto
 
 ○ Armazene os dados do usuário utilizando Redux.
 
-2. Produtos:
+## 2. Produtos:
 
-○ Crie uma página que exiba uma lista de produtos fictícios. Cada produto deve conter pelo menos um nome, uma descrição e um preço.
+- ○ Crie uma página que exiba uma lista de produtos fictícios. Cada produto deve conter pelo menos um nome, uma descrição e um preço.
 
-○ Permita que o usuário selecione a quantidade de cada produto que deseja comprar.
+- ○ Permita que o usuário selecione a quantidade de cada produto que deseja comprar.
 
-○ Os produtos selecionados e suas respectivas quantidades devem ser armazenados no Redux.
+- ○ Os produtos selecionados e suas respectivas quantidades devem ser armazenados no Redux.
 
-3. Finalizar Compra:
+## 3. Finalizar Compra:
 
-○ Crie uma página de resumo onde o usuário pode ver os produtos selecionados, suas quantidades e o valor total da compra.
+- ○ Crie uma página de resumo onde o usuário pode ver os produtos selecionados, suas quantidades e - o valor total da compra.
 
-○ Inclua um botão para finalizar a compra.
+- ○ Inclua um botão para finalizar a compra.
 
-○ Ao clicar em "Finalizar Compra", exiba um modal de confirmação informando que a compra foi concluída com sucesso.
+- ○ Ao clicar em "Finalizar Compra", exiba um modal de confirmação informando que a compra foi concluída com sucesso.
 
-○ Limpe os dados armazenados no Redux após a conclusão da compra.
+- ○ Limpe os dados armazenados no Redux após a conclusão da compra.
 
-Requisitos Técnicos
+## Tecnologias Utilizadas
 
-● Tecnologias: React, TypeScript, Redux.
+● Tecnologias: React, TypeScript, Redux. redux toolkit
 
 ● Interface: Utilize CSS ou frameworks como Material-UI para estilizar as páginas de forma simples e funcional.
 
 ● Persistência de Dados: Utilize Redux para armazenar e repassar os dados entre as páginas.
 
-● Não é necessário: Implementar backend, autenticação real, ou integração com APIs externas. Mas faça uma pasta services e simule uma conexão com uma rota fictícia.
+● Não foi é necessário: pasta services e para simular uma conexão com uma rota fictícia.
 
-Critérios de Avaliação
+Critérios
 
 ● Organização e clareza do código.
 
@@ -102,5 +98,3 @@ Critérios de Avaliação
 ● Simplicidade e funcionalidade da interface de usuário.
 
 ● Atenção aos detalhes, como validações e exibição de mensagens ao usuário.
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
