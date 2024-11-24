@@ -11,7 +11,8 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { RootState } from "@/redux/rootReducer";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { resetCart } from "@/redux/cart/actions";
+import { resetCart } from "@/redux/cart/slice";
+import { formattedPrice } from "@/helps/formatPrice";
 
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
@@ -28,13 +29,6 @@ export const Cart = () => {
   const productsCount = useSelector(SelectProductCount);
   const TotalPriceProducts = useSelector(SelectTotalPriceProduct);
   const dispatch = useDispatch();
-  const formattedPrice = (price: number) => {
-    return price.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-      minimumFractionDigits: 2,
-    });
-  };
 
   const handleCheckout = async () => {
     if (!currentUser) {
@@ -49,7 +43,7 @@ export const Cart = () => {
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" className="px-6">
           <ShoppingCart className="h-5 w-5" />
           {products.length > 0 && (
             <span className="bg- w rounded-full text-sm font-medium">
@@ -100,7 +94,7 @@ export const Cart = () => {
                   <p>{formattedPrice(TotalPriceProducts)}</p>
                 </div>
               </div>
-              {currentUser ? (
+              {currentUser?.email ? (
                 <Button
                   className="border- text-sm font-semibold uppercase"
                   onClick={handleCheckout}
@@ -109,7 +103,8 @@ export const Cart = () => {
                 </Button>
               ) : (
                 <Link
-                  to={"/"}
+                  to={"/login"}
+                  onClick={() => setIsCartOpen(false)}
                   className="border-b-2 text-sm hover:text-blue-900"
                 >
                   Faça Login para finalizar a compra

@@ -16,7 +16,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="p- flex w-full justify-between bg-primary text-white">
+    <header className="flex w-full justify-between bg-primary text-white">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <Link to="/" className="text-2xl font-bold">
           Fashion Close

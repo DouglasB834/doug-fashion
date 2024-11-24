@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 
-import cartReducer from "./cart/reducer";
+import carSlice from "./cart/slice";
 import userReducer from "./user/reducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
-  cart: cartReducer,
+  cart: carSlice,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
