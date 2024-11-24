@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
+import Categorie from "./pages/Categories/categorie.page";
 import HomePage from "./pages/homePage/home.page";
 import { LoginPage } from "./pages/login/loginPage";
 import Layout from "./pages/layout";
@@ -12,6 +13,14 @@ export const MainRouter = () => (
       element={
         <Layout>
           <HomePage />
+        </Layout>
+      }
+    />
+    <Route
+      path="/Categorie"
+      element={
+        <Layout>
+          <Categorie />
         </Layout>
       }
     />
